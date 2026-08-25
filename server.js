@@ -14,6 +14,21 @@ function onlyDigits(value) {
   return String(value || '').replace(/\D/g, '');
 }
 
+function isValidCpf(value) {
+  const cpf = onlyDigits(value);
+  if (cpf.length !== 11 || /^([0-9])\1{10}$/.test(cpf)) return false;
+  let sum = 0;
+  for (let i = 0; i < 9; i += 1) sum += Number(cpf[i]) * (10 - i);
+  let digit = (sum * 10) % 11;
+  if (digit === 10) digit = 0;
+  if (digit !== Number(cpf[9])) return false;
+  sum = 0;
+  for (let i = 0; i < 10; i += 1) sum += Number(cpf[i]) * (11 - i);
+  digit = (sum * 10) % 11;
+  if (digit === 10) digit = 0;
+  return digit === Number(cpf[10]);
+}
+
 function normalizePhone(value) {
   const digits = onlyDigits(value);
   if (digits.length !== 10 && digits.length !== 11) {
@@ -50,8 +65,8 @@ function validateCustomer(customer) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 64) {
     throw new Error('Informe um e-mail válido.');
   }
-  if (document.length !== 11) {
-    throw new Error('Informe um CPF válido com 11 dígitos.');
+  if (!isValidCpf(document)) {
+    throw new Error('O CPF padrão configurado é inválido. Confirme o CPF do responsável antes de gerar o Pix.');
   }
 
   return {
@@ -64,8 +79,10 @@ function validateCustomer(customer) {
 }
 
 function getAuthHeader() {
-  const secretKey = process.env.PAGARME_SECRET_KEY;
+  const secretKey = String(process.env.PAGARME_SECRET_KEY || '').trim().replace(/^['"]|['"]$/g, '');
   if (!secretKey) throw new Error('PAGARME_SECRET_KEY não configurada no Render.');
+  if (secretKey.startsWith('pk_')) throw new Error('A variável PAGARME_SECRET_KEY recebeu uma Chave Pública. Use a Chave Secreta sk_test_... ou sk_... do painel Pagar.me.');
+  if (!/^sk_/.test(secretKey)) throw new Error('PAGARME_SECRET_KEY está em formato inválido. Cole somente a Chave Secreta do Pagar.me, sem Bearer, espaços ou aspas.');
   return `Basic ${Buffer.from(`${secretKey}:`).toString('base64')}`;
 }
 
@@ -80,7 +97,9 @@ async function pagarmeRequest(endpoint, options = {}) {
   });
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
-    const message = body?.message || body?.errors?.[0]?.message || 'O Pagar.me recusou a solicitação.';
+    const errors = Array.isArray(body?.errors) ? body.errors : Object.entries(body?.errors || {}).flatMap(([parameter, value]) => (Array.isArray(value) ? value : [value]).map((item) => ({ parameter, message: item?.message || String(item) })));
+    const details = errors.map((item) => [item.parameter, item.message].filter(Boolean).join(': ')).filter(Boolean).join(' | ');
+    const message = details || body?.message || 'O Pagar.me recusou a solicitação.';
     const error = new Error(message);
     error.status = response.status;
     throw error;
