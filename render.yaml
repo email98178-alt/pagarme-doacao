@@ -9,3 +9,11 @@ services:
     envVars:
       - key: PAGARME_SECRET_KEY
         sync: false
+      - key: PAGARME_CUSTOMER_NAME
+        sync: false
+      - key: PAGARME_CUSTOMER_EMAIL
+        sync: false
+      - key: PAGARME_CUSTOMER_DOCUMENT
+        sync: false
+      - key: PAGARME_CUSTOMER_PHONE
+        sync: false
