@@ -23,38 +23,38 @@
 </style>
 </head>
 <body>
-<header class="page-header"><div class="container"><div class="brand-mark">Juntos <span>por um lar</span></div></div></header>
+<header class="page-header"><div class="container"><div class="brand-mark"Ajude <span>o Ezequiel</span></div></div></header>
 <main>
   <section class="hero-grid container">
     <div class="hero-copy">
       <p class="eyebrow">Um lar para Ezequiel e sua esposa</p>
 <div class="image-slot" role="img" aria-label="Imagem do Ezequiel e sua esposa"><img src="https://i.postimg.cc/tT9Vnb03/1765139353-561.jpg" alt="Ezequiel e sua esposa" referrerpolicy="no-referrer"></div>
-      <p>Ezequiel dedica a vida a cuidar da esposa. Hoje, parte do dia é dedicada à coleta de latinhas para garantir alguma renda. Com sua ajuda, ele pode se aproximar do sonho de conquistar uma casa própria e viver com mais dignidade.</p>
+      <p>Ezequiel dedica a vida a cuidar da esposa. Com sua ajuda, ele pode se aproximar do sonho de conquistar uma casa própria e viver com mais dignidade.</p>
       <div class="micro-trust"><span><i></i>Doação pelo Pix</span><span><i></i>Processo simples</span><span><i></i>Atualizações da campanha</span></div>
     </div>
 
     <section class="donation-card" id="doacao" aria-labelledby="donation-title">
       <form id="donationForm" novalidate>
-        <h2 id="donation-title">Ajude Ezequiel e sua esposa</h2>
+        <h2 id="donation-title">Quer ajudar?</h2>
         <p class="card-intro">Uma contribuição hoje ajuda Ezequiel a construir um lar para ele e sua esposa.</p>
-        <span class="amount-title">Quanto você gostaria de contribuir? <span class="selection-hint" id="selectionHint" aria-live="polite">R$ 50,00 selecionados</span></span>
+        <span class="amount-title">Qualquer valor faz a diferença <span class="selection-hint" id="selectionHint" aria-live="polite">R$ 50,00 selecionados</span></span>
         <div class="amount-grid" role="group" aria-label="Valores sugeridos">
-          <button type="button" class="amount-btn" data-cents="2500" aria-pressed="false">R$ 25,00<span class="amount-label">um primeiro passo</span></button>
-          <button type="button" class="amount-btn selected" data-cents="5000" aria-pressed="true">R$ 50,00<span class="amount-label">apoio mais escolhido</span></button>
+          <button type="button" class="amount-btn selected" data-cents="2500" aria-pressed="false">R$ 25,00<span class="amount-label">um primeiro passo</span></button>
+          <button type="button" class="amount-btn" data-cents="5000" aria-pressed="true">R$ 50,00<span class="amount-label">apoio mais escolhido</span></button>
           <button type="button" class="amount-btn" data-cents="10000" aria-pressed="false">R$ 100,00<span class="amount-label">mais impacto</span></button>
           <button type="button" class="amount-btn" data-cents="25000" aria-pressed="false">R$ 250,00<span class="amount-label">grande apoio</span></button>
         </div>
         <label class="custom-label" for="customAmount">Ou digite outro valor</label>
         <input class="custom-input" id="customAmount" inputmode="numeric" autocomplete="off" placeholder="R$ 0,00" data-cents="0" aria-describedby="amountError">
         <p class="error" id="amountError" role="alert">Escolha ou digite um valor para doar.</p><p class="form-status" id="formStatus" role="status" aria-live="polite"></p><div class="payment-loading" id="paymentLoading" role="status" aria-live="polite" aria-hidden="true"><span class="loading-row"><span class="loading-spinner" aria-hidden="true"></span>Preparando seu Pix</span><span class="loading-detail">Só mais um instante. Estamos criando um pagamento seguro para esta doação.</span></div>
-        <button class="primary-btn" id="submitDonation" type="submit">Gerar Pix de R$ 50,00</button><p class="donation-reassurance">Você será levado ao Pix na próxima etapa.</p><p class="impact-note">Toda contribuição é importante para aproximar o casal do sonho de uma casa própria.</p>
+        <button class="primary-btn" id="submitDonation" type="submit">Ajudar com R$ 25,00</button><p class="donation-reassurance">Você será levado ao Pix na próxima etapa.</p><p class="impact-note">Toda contribuição é importante para aproximar o casal do sonho de uma casa própria.</p>
         <div class="card-trust" aria-label="Informações de segurança"><span><strong>✓</strong> Pix direto</span><span><strong>✓</strong> Você escolhe o valor</span><span><strong>✓</strong> Processo simples</span></div><p class="security">Antes de confirmar, confira o nome do recebedor e o valor no aplicativo do seu banco.</p>
       </form>
 
       <div class="confirmation" id="confirmation" aria-live="polite">
 <h3>Ezequiel aguarda sua doação</h3>
-        <p class="pix-meta" id="pixMeta">Seu Pix está pronto. Conclua pelo aplicativo do banco para que sua contribuição ajude Ezequiel e sua esposa.</p><p class="pix-stay">Deixe esta página aberta enquanto finaliza o pagamento.</p>
-        <div class="selected-amount" id="selectedAmount">R$ 50,00</div>
+        <p class="pix-meta" id="pixMeta">Seu Pix está pronto. Conclua pelo aplicativo do banco para que sua contribuição ajude Ezequiel e sua esposa.</p><p class="pix-stay"></p>
+        <div class="selected-amount" id="selectedAmount">R$ 25,00</div>
         <div class="pix-layout"><div class="qr-frame" id="qrFrame"><span class="qr-placeholder">Seu QR Code Pix aparecerá aqui.</span></div><div><div class="pix-box"><span class="pix-recipient" id="pixRecipient">Pagamento Pix gerado</span><span class="pix-status" id="pixStatus">Aguardando sua doação</span></div><div class="pix-payload-box"><code class="pix-payload" id="pixPayload" title="Pix Copia e Cola">O código Pix será gerado aqui.</code><button class="copy-btn" id="copyPayload" type="button" disabled>Copiar código Pix</button></div><p class="copy-feedback" id="copyFeedback" role="status" aria-live="polite"></p></div></div><details class="pix-help" open><summary>Como concluir o pagamento?</summary><ol class="pix-steps"><li><b>1</b><span>Abra o aplicativo do seu banco e escolha Pix.</span></li><li><b>2</b><span>Escaneie o QR Code ou cole a chave copiada.</span></li><li><b>3</b><span>Confira o nome do recebedor e o valor antes de confirmar.</span></li></ol></details>
         <p class="pix-warning" id="pixWarning">A chave exibida é um exemplo. Substitua-a pela chave oficial da campanha antes de publicar.</p><p class="pix-config-note" id="pixConfigNote">O pagamento ainda está em modo de demonstração. Configure a chave oficial para ativar um Pix válido.</p><p class="pix-time-note" id="pixTimeNote">O código Pix fica disponível por tempo limitado. Se não conseguir concluir agora, você pode voltar a esta página e gerar outro.</p>
       </div>
