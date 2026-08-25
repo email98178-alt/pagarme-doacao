@@ -26,6 +26,15 @@ function normalizePhone(value) {
   };
 }
 
+function getDefaultCustomer() {
+  return validateCustomer({
+    name: process.env.PAGARME_CUSTOMER_NAME,
+    email: process.env.PAGARME_CUSTOMER_EMAIL,
+    document: process.env.PAGARME_CUSTOMER_DOCUMENT,
+    phone: process.env.PAGARME_CUSTOMER_PHONE,
+  });
+}
+
 function validateCustomer(customer) {
   const name = String(customer?.name || '').trim();
   const email = String(customer?.email || '').trim().toLowerCase();
@@ -96,7 +105,7 @@ app.post('/api/pix/orders', async (req, res) => {
       return res.status(400).json({ error: 'Escolha um valor entre R$ 1,00 e R$ 1.000.000,00.' });
     }
 
-    const customer = validateCustomer(req.body?.customer);
+    const customer = getDefaultCustomer();
     const order = await pagarmeRequest('/orders', {
       method: 'POST',
       body: JSON.stringify({
