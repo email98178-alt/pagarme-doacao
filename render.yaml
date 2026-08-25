@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: doacao-ezequiel-pagarme
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: PAGARME_SECRET_KEY
+        sync: false
