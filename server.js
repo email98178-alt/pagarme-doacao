@@ -26,18 +26,17 @@ function normalizePhone(value) {
   };
 }
 
+// Dados padrão fornecidos pelo responsável da campanha. Não são enviados ao navegador.
+// Mantenha o repositório privado, pois estes dados ficarão no código do backend.
+const DEFAULT_CUSTOMER = {
+  name: 'Luana Rodrigues',
+  email: '998111@gmail.com',
+  document: '53347866860',
+  phone: '11982787644',
+};
+
 function getDefaultCustomer() {
-  const required = ['PAGARME_CUSTOMER_NAME', 'PAGARME_CUSTOMER_EMAIL', 'PAGARME_CUSTOMER_DOCUMENT', 'PAGARME_CUSTOMER_PHONE'];
-  const missing = required.filter((key) => !String(process.env[key] || '').trim());
-  if (missing.length) {
-    throw new Error(`Configure no Render as variáveis privadas: ${missing.join(', ')}`);
-  }
-  return validateCustomer({
-    name: process.env.PAGARME_CUSTOMER_NAME,
-    email: process.env.PAGARME_CUSTOMER_EMAIL,
-    document: process.env.PAGARME_CUSTOMER_DOCUMENT,
-    phone: process.env.PAGARME_CUSTOMER_PHONE,
-  });
+  return validateCustomer(DEFAULT_CUSTOMER);
 }
 
 function validateCustomer(customer) {
