@@ -27,6 +27,11 @@ function normalizePhone(value) {
 }
 
 function getDefaultCustomer() {
+  const required = ['PAGARME_CUSTOMER_NAME', 'PAGARME_CUSTOMER_EMAIL', 'PAGARME_CUSTOMER_DOCUMENT', 'PAGARME_CUSTOMER_PHONE'];
+  const missing = required.filter((key) => !String(process.env[key] || '').trim());
+  if (missing.length) {
+    throw new Error(`Configure no Render as variáveis privadas: ${missing.join(', ')}`);
+  }
   return validateCustomer({
     name: process.env.PAGARME_CUSTOMER_NAME,
     email: process.env.PAGARME_CUSTOMER_EMAIL,
