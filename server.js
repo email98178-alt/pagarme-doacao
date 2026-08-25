@@ -89,16 +89,20 @@ async function pagarmeRequest(endpoint, options = {}) {
 }
 
 function extractPix(order) {
-  const charge = order?.charges?.[0];
-  const transaction = charge?.last_transaction || {};
+  const charge = order?.charges?.[0] || {};
+  const transaction = charge?.last_transaction || order?.last_transaction || {};
+  const paymentPix = order?.payments?.[0]?.pix || {};
+  const qrCode = transaction?.qr_code || transaction?.qr_code_string || paymentPix?.qr_code || paymentPix?.qr_code_string || null;
+  const qrCodeUrl = transaction?.qr_code_url || transaction?.qr_code_image_url || paymentPix?.qr_code_url || paymentPix?.qr_code_image_url || null;
   return {
     orderId: order?.id,
-    chargeId: charge?.id,
+    chargeId: charge?.id || null,
     status: transaction?.status || charge?.status || order?.status,
     amount: order?.amount,
-    qrCode: transaction?.qr_code || null,
-    qrCodeUrl: transaction?.qr_code_url || null,
-    expiresAt: transaction?.expires_at || null,
+    qrCode,
+    qrCodeUrl,
+    expiresAt: transaction?.expires_at || paymentPix?.expires_at || null,
+    pixAvailable: Boolean(qrCode),
   };
 }
 
