@@ -103,6 +103,36 @@ body{font-family:'Nunito Sans',Arial,sans-serif;color:var(--ink);background:var(
 /* Botões com a mesma linguagem visual: verde sólido, cantos discretos e estados claros */
 button,.create,.mobile-cta{font-family:'Nunito Sans',Arial,sans-serif}.create,.primary,.cta,.mobile-cta{background:var(--green);border-radius:5px;font-weight:800}.create:hover,.primary:hover,.cta:hover,.mobile-cta:hover{background:var(--green-hover)}.primary,.secondary{min-height:46px}.primary{border:0;color:#fff}.secondary{border:1px solid #d5d8da;border-radius:5px;background:#fff;color:#36393b;font-weight:700}.secondary:hover{border-color:var(--green);color:var(--green-dark);background:#fbfffc}.amount{border:1px solid #73c99a;border-radius:5px;color:var(--green-dark);font-weight:700;background:#fff}.amount:hover{border-color:var(--green);background:#f4fff8}.amount.selected{background:var(--green);border-color:var(--green);color:#fff}.cta{min-height:48px;border-radius:5px}.copy,.key-row button{border:1px solid #bcdcc9;border-radius:5px;color:var(--green-dark);background:#fff;font-weight:700}.copy:hover,.key-row button:hover{background:#f0fff6;border-color:var(--green)}.seal{border-radius:5px;color:var(--green-dark);font-weight:700}.tabs a{font-weight:600;color:#666}.tabs a.active{color:var(--green);border-bottom-color:var(--green)}.raised{color:var(--green);font-weight:800}.progress span{background:var(--green)}.stats{background:var(--soft);border-color:#d8f1d0}.protected{color:var(--green-dark)}.details summary{color:var(--green-dark)}
 @media(max-width:760px){.topbar-inner{font-size:12px}.logo{font-size:18px}.campaign-info h1{font-size:24px}.primary,.secondary{min-height:44px}.tabs a{font-weight:700}.amount{font-size:14px}}
+
+/* Mobile: sequência clara de campanha, ação, conteúdo e contribuição */
+@media(max-width:760px){
+  body{overflow-x:hidden;background:#f5f5f5}
+  .topbar{height:58px}
+  .topbar-inner{width:calc(100% - 20px);gap:6px}
+  .logo{max-width:165px;overflow:hidden;text-overflow:ellipsis}
+  .top-actions{gap:2px}
+  .login{padding:7px 5px}.create{padding:8px 7px;font-size:9px}
+  .page{width:100%;margin:0;padding:0 0 25px}
+  .grid{display:block}
+  .left{display:block}
+  .campaign-card{margin:10px 10px 0;padding:10px 10px 0}
+  .campaign-card .cover{height:180px;aspect-ratio:auto}
+  .campaign-info{padding:15px 3px 18px}
+  .campaign-info h1{font-size:24px;line-height:1.18}
+  .campaign-desc{margin:15px 0 12px;font-size:12px}
+  .right{margin:10px 10px 0}
+  .donation-card{margin:0;padding:17px 14px 14px}
+  .creator-card{margin-top:12px}
+  .tabs{margin:12px 10px 0;padding:0 10px;gap:19px;white-space:nowrap;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs a{padding:13px 0 11px;font-size:11px}
+  .content-card{margin:0 10px;padding:19px 15px;border-radius:0 0 4px 4px}
+  .form-card{width:auto;margin:13px 10px 0;padding:18px 14px;border-radius:4px}
+  .form-card h3{font-size:20px}
+  .amounts{grid-template-columns:repeat(2,1fr);gap:8px}
+  .amount{min-height:57px}
+  .footer{margin-top:18px}
+}
 </style>
 </head>
 <body>
@@ -156,7 +186,7 @@ $('#copyPayload')?.addEventListener('click',async()=>{const v=$('#pixPayload').t
 async function copyKey(btn){const v='ajudeoezequiel@gmail.com';try{await navigator.clipboard.writeText(v)}catch(e){}if(btn)btn.textContent='Chave copiada';track('PixKeyCopied')}
 $('#copyCampaignPixKey')?.addEventListener('click',e=>copyKey(e.currentTarget));$('#copyDirectKey')?.addEventListener('click',e=>copyKey(e.currentTarget));
 $('#retry')?.addEventListener('click',()=>{clearStoredPix();pixBox.classList.remove('show');form.hidden=false;form.scrollIntoView({behavior:'smooth',block:'center'})});
-const contributionForm=document.querySelector('.form-card'),actionColumn=document.querySelector('.right');if(contributionForm&&actionColumn){actionColumn.appendChild(contributionForm)}
+const contributionForm=document.querySelector('.form-card'),actionColumn=document.querySelector('.right'),contentCard=document.querySelector('.content-card'),page=document.querySelector('.page');function placeContributionForm(){if(!contributionForm||!actionColumn||!contentCard)return;if(window.matchMedia('(max-width:760px)').matches){page.appendChild(contributionForm)}else{actionColumn.appendChild(contributionForm)}}placeContributionForm();window.addEventListener('resize',placeContributionForm);
 $('#sideHelp')?.addEventListener('click',()=>{track('DonationCtaClicked');const f=$('.form-card');f?.classList.add('is-open');f?.scrollIntoView({behavior:'smooth',block:'center'})});
 $('#sideShare')?.addEventListener('click',()=>$('#shareBtn')?.click());$('#sideCopy')?.addEventListener('click',async e=>{try{await navigator.clipboard.writeText(location.href);e.currentTarget.textContent='Link copiado'}catch(x){}});$('#sideReport')?.addEventListener('click',()=>$('#transparencia')?.scrollIntoView({behavior:'smooth'}));
 $('#shareBtn')?.addEventListener('click',async()=>{const text='Ajude Ezequiel e Joselma a conquistar uma casa própria: '+location.href;track('CampaignShare');if(navigator.share){try{await navigator.share({title:document.title,text,url:location.href})}catch(e){}}else window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank')});
