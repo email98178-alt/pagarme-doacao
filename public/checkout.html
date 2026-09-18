@@ -13,6 +13,59 @@
 /* Aproximação final da composição de plataforma */
 .topbar-inner{max-width:1180px}.page{max-width:1180px}.left{min-width:0}.right{min-width:0}.campaign-card{box-shadow:0 1px 3px #00000010}.campaign-info{padding:17px 22px 27px}.campaign-info h1{font-size:28px;font-weight:600}.campaign-desc{max-width:680px}.donation-card{padding:20px 14px 17px;box-shadow:0 1px 3px #00000010}.raised{font-size:31px}.stats{grid-template-columns:1fr;gap:5px}.stats span{font-size:11px}.protected{font-size:10px}.creator-card{background:#fafafa}.creator-card strong{font-size:14px}.content-card{min-height:360px}.legal{margin:22px 0 0;padding:12px 0;border-top:1px solid var(--line);color:#888;font-size:10px;line-height:1.45}.report-link{display:inline-block;margin-top:13px;color:#777;font-size:11px;text-decoration:none}.footer{background:#fff}.footer-main{width:min(100% - 32px,1180px);margin:auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:30px;text-align:left}.footer h4{margin:0 0 10px;color:#333;font-size:12px}.footer a{display:block;margin:5px 0;color:#777;text-decoration:none}.footer-bottom{width:min(100% - 32px,1180px);margin:25px auto 0;padding-top:16px;border-top:1px solid var(--line);text-align:center}.footer-bottom p{margin:3px}.campaign-action-row{display:flex;gap:8px;margin-top:12px}.campaign-action-row button{flex:1;padding:10px;border:1px solid #ddd;border-radius:4px;background:#fff;color:#555;font-size:11px}.campaign-action-row button:hover{border-color:var(--green);color:var(--green)}
 @media(max-width:760px){.footer-main{grid-template-columns:1fr 1fr;gap:18px}.footer-main>div:first-child{grid-column:1 / -1}.campaign-action-row{display:none}}
+
+/* Mobile no padrão de página de vaquinha */
+@media(max-width:760px){
+  body{background:#f5f5f5;padding-bottom:72px}
+  .topbar{height:58px;position:sticky;top:0;z-index:30}
+  .topbar-inner{width:calc(100% - 24px);min-height:58px;padding:0;display:flex;flex-wrap:nowrap;gap:8px}
+  .logo{font-size:18px;letter-spacing:-.7px;white-space:nowrap}
+  .logo-mark{width:24px;height:24px;font-size:15px;border-radius:5px}
+  .nav{display:none}
+  .top-actions{margin-left:auto;gap:4px;white-space:nowrap}
+  .search{display:block;font-size:0;width:27px;height:27px;position:relative}
+  .search:before{content:'⌕';position:absolute;inset:0;color:var(--green);font-size:24px;line-height:25px;text-align:center}
+  .login{padding:7px 6px;font-size:10px}
+  .create{padding:8px 8px;border-radius:4px;font-size:9px}
+  .page{width:100%;margin:0 auto 34px}
+  .grid{display:flex;flex-direction:column;gap:0}
+  .left{display:contents}
+  .campaign-card{order:1;border-radius:0;box-shadow:0 1px 3px #00000010}
+  .cover{height:246px;border-radius:0}
+  .heart{right:13px;top:13px;width:38px;height:38px}
+  .campaign-info{padding:16px 16px 20px}
+  .campaign-info h1{font-size:25px;line-height:1.18}
+  .campaign-desc{margin:17px 0 13px;font-size:12px}
+  .seal{padding:6px 11px;font-size:10px}
+  .right{order:2;margin:12px 10px 0}
+  .donation-card{position:static;margin:0;padding:17px 14px 14px;border-radius:4px}
+  .raised-label{font-size:14px}
+  .raised{font-size:28px}
+  .goal{font-size:13px}
+  .progress{margin:12px 0}
+  .stats{margin-bottom:13px;padding:10px}
+  .primary,.secondary{padding:13px;font-size:14px}
+  .creator-card{margin-top:12px;padding:12px}
+  .creator-card strong{font-size:13px}
+  .tabs{order:3;margin:12px 10px 0;border-radius:4px 4px 0 0;background:#fff;gap:22px;padding:0 12px}
+  .tabs a{padding:14px 0 12px;font-size:11px}
+  .content-card{order:4;margin:0 10px;padding:20px 15px;border-radius:0 0 4px 4px;box-shadow:0 1px 2px #00000008}
+  .content-card h2{font-size:18px}
+  .content-card p{font-size:12px}
+  .direct-pix{padding:14px 0;margin:17px 0}
+  .key-row{align-items:stretch;flex-wrap:wrap}
+  .key-row code{flex:1 1 100%;font-size:12px}
+  .key-row button{flex:1 1 100%;padding:10px}
+  .form-card{margin:14px 10px 0;padding:17px 14px;border-radius:4px}
+  .form-card h3{font-size:19px}
+  .amounts{grid-template-columns:repeat(2,1fr);gap:8px}
+  .amount{min-height:56px}
+  .footer{margin-top:18px;padding:24px 15px 85px}
+  .footer-main{width:100%;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
+  .footer-main>div:first-child{grid-column:1 / -1}
+  .footer-bottom{width:100%}
+  .mobile-cta{display:block;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;padding:14px;border-radius:4px;background:var(--green);color:#fff;text-align:center;font-weight:700;box-shadow:0 3px 14px #0004}
+}
 </style>
 </head>
 <body>
