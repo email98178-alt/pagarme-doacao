@@ -83,6 +83,14 @@
 /* Imagem no cartão como na referência */
 .campaign-card{padding:10px 10px 0}.campaign-card .cover{height:auto;aspect-ratio:700/410;border-radius:4px;overflow:hidden}.campaign-info{padding:17px 12px 17px}.campaign-info h1{font-size:28px}.heart{right:10px;top:10px}
 @media(max-width:760px){.campaign-card{padding:10px 10px 0;border-radius:4px}.campaign-card .cover{height:180px;aspect-ratio:auto;border-radius:4px}.campaign-info{padding:15px 6px 17px}.campaign-info h1{font-size:24px}.heart{right:9px;top:9px}}
+
+/* Composição de plataforma com identidade própria */
+:root{--bg:#f5f5f5;--card:#fff;--green:#25b96f;--green-dark:#149257;--ink:#292929;--muted:#747474;--line:#e5e5e5}
+body{background:var(--bg);color:var(--ink);font-family:Arial,'Helvetica Neue',sans-serif;font-size:14px}
+.topbar{height:64px;background:#fff;border-bottom:1px solid #e8e8e8}.topbar-inner{width:min(calc(100% - 64px),1180px);max-width:1180px}.logo{color:var(--green);font-family:Arial,sans-serif;font-size:22px;font-weight:700}.logo-mark{background:var(--green)}.nav{gap:30px}.nav a,.login,.create,.search{font-size:13px}.create{background:var(--green);border-radius:5px}
+.page{width:min(calc(100% - 64px),1180px);max-width:1180px;margin:24px auto 60px}.grid{grid-template-columns:minmax(0,700px) 330px;gap:24px}.campaign-card{padding:10px 10px 0;border-radius:4px;background:#fff;box-shadow:none}.campaign-card .cover{width:100%;height:auto;aspect-ratio:700/410;border-radius:4px}.campaign-info{padding:17px 2px 27px}.campaign-info h1{font-size:28px;font-weight:600}.campaign-desc{margin-top:22px}.donation-card{border-top:3px solid var(--green);border-radius:3px;box-shadow:none;padding:20px 14px 16px}.raised{font-size:30px}.primary,.secondary{border-radius:4px}.creator-card{background:#fafafa;box-shadow:none}
+.tabs{gap:29px;margin-top:15px}.tabs a{font-size:13px}.content-card{border-radius:0;box-shadow:none;padding:24px 22px;min-height:390px}.form-card{max-width:700px;margin:24px 0 0;border-radius:4px;box-shadow:none}.footer{background:#fff;border-top:1px solid var(--line)}
+@media(max-width:760px){.topbar{height:58px}.topbar-inner{width:calc(100% - 24px)}.page{width:100%;margin:0 auto 32px}.grid{display:flex;flex-direction:column;gap:0}.campaign-card{margin:12px 10px 0;padding:10px 10px 0;border-radius:4px}.campaign-card .cover{height:180px;aspect-ratio:auto;border-radius:4px}.campaign-info{padding:15px 2px 18px}.campaign-info h1{font-size:24px}.right{margin:10px 10px 0}.donation-card{position:static}.tabs{margin:12px 10px 0;padding:0 10px;background:#fff;gap:20px;border-radius:4px 4px 0 0}.tabs a{font-size:11px}.content-card{margin:0 10px;padding:19px 15px;border-radius:0 0 4px 4px}.form-card{margin:13px 10px 0;padding:17px 14px}.footer{margin-top:18px}}
 </style>
 </head>
 <body>
