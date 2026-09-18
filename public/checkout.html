@@ -70,6 +70,15 @@
 /* Ajustes finos de proporção e acabamento */
 .cover{height:auto;aspect-ratio:700/410}.campaign-card{border-radius:3px}.campaign-info h1{letter-spacing:-.65px}.tabs{margin-top:14px}.content-card{border-radius:0}.donation-card{border-radius:3px}.primary,.secondary{border-radius:3px}
 @media(max-width:760px){.cover{height:auto;aspect-ratio:700/410}.campaign-card{border-radius:0}.campaign-info h1{font-size:24px;letter-spacing:-.35px}.campaign-info{padding:15px 16px 18px}.right{margin:10px 10px 0}.donation-card{border-radius:3px}.tabs{margin:10px 10px 0;padding:0 9px;gap:19px}.tabs a{padding:13px 0 11px}.content-card{margin:0 10px;padding:18px 15px}.form-card{margin-top:12px}}
+
+/* Correção mobile: sem container flutuante e imagem compacta */
+@media(max-width:760px){
+  body{padding-bottom:0}
+  .cover{height:190px;aspect-ratio:auto}
+  .mobile-cta{display:none!important}
+  .footer{padding-bottom:24px}
+  .donation-card{margin-top:10px}
+}
 </style>
 </head>
 <body>
